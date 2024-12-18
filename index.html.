@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIONS KARATE CLUB PUNE Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .terms {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LIONS KARATE CLUB PUNE</h1>
+        <h2>Student Registration Form</h2>
+        <form id="registrationForm">
+            <label for="studentName">Student's Name</label>
+            <input type="text" id="studentName" name="studentName" required>
+
+            <label for="parentName">Parent's Name</label>
+            <input type="text" id="parentName" name="parentName" required>
+
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="height">Height (in cm)</label>
+            <input type="number" id="height" name="height" required>
+
+            <label for="weight">Weight (in kg)</label>
+            <input type="number" id="weight" name="weight" required>
+
+            <label for="address">Correspondence Address</label>
+            <textarea id="address" name="address" rows="3" required></textarea>
+
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <div class="terms">
+                <h3>Terms and Conditions</h3>
+                <p>
+                    - Each student will pay their admission fee Rs. 200/- at the time of Admission.<br>
+                    - Every Month Rs. 500/- fees will be charged.<br>
+                    - If the fees is not paid up from 1 to 5 of the month, Rs. 5/- is fine to be paid per day. Also, if fees is not paid up to 10th of the month, the admission will be cancelled.<br>
+                    - Entry Fees is compulsory, if the previous admission was cancelled.<br>
+                    - If you take a training for 1 day, then the fee of 1 month will be charged.<br>
+                    - Admission Fee and Karate Uniform Fees will not be refundable.<br>
+                    - Admission will be open for above 5 years of age.<br>
+                    - Wearing Karate dress is compulsory.<br>
+                    - Exams will be conducted every 3 to 6 months and co-training also.<br>
+                    - After admission, take the Karate uniform at the institute after 2 weeks from admission.<br>
+                    - If any student disobeys rules & regulations during training, the admission will be cancelled.<br>
+                    - While training, if the student is injured, the institute or instructor will not be responsible.<br>
+                    - To drop and pick up the student at the class will be the parents' responsibility.<br>
+                </p>
+            </div>
+
+            <label>
+                <input type="checkbox" id="acceptTerms" required>
+                I accept all the rules & regulations of LIONS KARATE CLUB PUNE.
+            </label>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div id="message" style="color: green; font-weight: bold; text-align: center; margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get form data
+            const studentData = {
+                studentName: document.getElementById('studentName').value,
+                parentName: document.getElementById('parentName').value,
+                dob: document.getElementById('dob').value,
+                height: document.getElementById('height').value,
+                weight: document.getElementById('weight').value,
+                address: document.getElementById('address').value,
+                phone: document.getElementById('phone').value,
+                acceptTerms: document.getElementById('acceptTerms').checked
+            };
+
+            // Save data to localStorage
+            const savedData = JSON.parse(localStorage.getItem('students')) || [];
+            savedData.push(studentData);
+            localStorage.setItem('students', JSON.stringify(savedData));
+
+            // Show confirmation message
+            document.getElementById('message').textContent = "Registration completed successfully!";
+            document.getElementById('registrationForm').reset();
+        });
+    </script>
+</body>
+</html>
